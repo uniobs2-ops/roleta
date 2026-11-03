@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0f">
+    <title>Royal Roulette</title>
+
+    <!-- SDK do Telegram Mini App (obrigatório) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <main class="container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <div class="header__logo">
+                <i class="fas fa-gem"></i>
+                <span>ROYAL ROULETTE</span>
+            </div>
+            <div class="header__user">
+                <span class="user__name" id="userName">Carregando...</span>
+                <span class="vip-badge" id="vipBadge" hidden><i class="fas fa-crown"></i> <span id="vipText">VIP</span></span>
+            </div>
+        </header>
+
+        <!-- Status: tokens e token diário -->
+        <section class="status">
+            <div class="status__card">
+                <span class="status__label"><i class="fas fa-coins"></i> Tokens</span>
+                <strong class="status__value" id="tokenCount">0</strong>
+                <span class="status__sub">comprados</span>
+            </div>
+            <div class="status__card" id="dailyCard" hidden>
+                <span class="status__label"><i class="fas fa-ticket"></i> Token diário</span>
+                <strong class="status__value" id="dailyValue">—</strong>
+                <span class="status__sub" id="dailySub">—</span>
+            </div>
+        </section>
+
+        <!-- Roleta -->
+        <section class="roulette-section">
+            <div class="roulette-wrapper">
+                <div class="roulette-pointer"></div>
+                <canvas id="rouletteCanvas" width="640" height="640"></canvas>
+                <button class="roulette-center" id="centerBtn" type="button" aria-label="Girar">
+                    <div class="center-glow"></div>
+                    <span class="center-text">GIRAR</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Controles -->
+        <section class="controls">
+            <button id="spinBtn" class="btn-spin" type="button">
+                <span class="btn-text"><i class="fas fa-play"></i> GIRAR A ROLETA</span>
+                <span class="btn-cost" id="btnCost">1 token</span>
+            </button>
+            <p class="spin-info" id="spinInfo">Carregando...</p>
+            <a class="btn-buy" id="buyBtn" href="#" target="_blank" rel="noopener" hidden>
+                <i class="fas fa-shopping-cart"></i> Comprar tokens
+            </a>
+        </section>
+
+        <!-- Resultado -->
+        <section class="result-section" id="resultSection">
+            <div class="result-card">
+                <div class="result-icon"><i class="fas fa-trophy" id="resultIcon"></i></div>
+                <h3 class="result-title" id="resultTitle">Você ganhou!</h3>
+                <p class="result-prize" id="resultPrize">Nome do Prêmio</p>
+                <p class="result-note" id="resultNote"><i class="fas fa-paper-plane"></i> O prêmio foi enviado para o seu chat com o bot.</p>
+                <button class="btn-claim" id="btnClose" type="button" hidden>
+                    <i class="fab fa-telegram"></i> FECHAR E VER NO CHAT
+                </button>
+            </div>
+        </section>
+
+        <!-- Histórico -->
+        <section class="history-section">
+            <h3 class="history-title"><i class="fas fa-history"></i> Minhas rodadas</h3>
+            <div class="history-list" id="historyList">
+                <p class="empty-history">Nenhuma rodada ainda. Seja o primeiro a girar!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner">
+            <div class="dot"></div>
+            <i class="fas fa-gem"></i>
+        </div>
+        <p>Sorteando seu prêmio...</p>
+    </div>
+
+    <!-- Erro -->
+    <div class="modal-overlay" id="errorModal">
+        <div class="modal-content">
+            <i class="fas fa-exclamation-triangle modal-icon"></i>
+            <h3 id="errorTitle">Ops!</h3>
+            <p id="errorMessage">Algo deu errado.</p>
+            <button class="btn-close" type="button" onclick="closeError()">Fechar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

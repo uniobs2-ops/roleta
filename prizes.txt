@@ -1,0 +1,29 @@
+# ============================================================
+# PRÊMIOS DA ROLETA  (fica no BACKEND — o sorteio é feito no servidor)
+#
+# Uma opção por linha:
+#   Nome | chance | cor | ícone | tipo | conteúdo
+#
+# chance  : peso. Quanto maior, maior a fatia e a probabilidade.
+# cor     : hexadecimal (#ff2d78). Opcional.
+# ícone   : Font Awesome (fa-coins, fa-gem, fa-crown, fa-tag, fa-gift,
+#           fa-file, fa-link, fa-comment, fa-star, fa-heart, fa-fire,
+#           fa-bolt, fa-ticket, fa-xmark, fa-image, fa-video)
+# tipo    : o que o bot faz ao sair o prêmio
+#   tokens  -> adiciona tokens ao saldo. Conteúdo = quantidade (ex: 10)
+#   texto   -> bot envia uma mensagem. Conteúdo = texto (use \n para quebrar linha)
+#   link    -> bot envia um link. Conteúdo = URL
+#   arquivo -> bot envia um arquivo. Conteúdo = file_id do Telegram ou URL direta
+#   nada    -> "não foi dessa vez" (sem conteúdo)
+#
+# Linhas vazias e linhas começando com # são ignoradas.
+# A ordem das linhas define o id do prêmio (1, 2, 3...).
+# Pode editar o arquivo sem reiniciar: ele é relido quando muda.
+# ============================================================
+
+10 Tokens Extras | 20 | #ff2d78 | fa-coins | tokens | 10
+5 Tokens Extras  | 25 | #ff6b9d | fa-coins | tokens | 5
+Cupom 10% OFF    | 20 | #e91e63 | fa-tag   | texto  | Seu cupom: ROYAL10\nVálido por 7 dias.
+Conteúdo VIP     | 10 | #ad1457 | fa-crown | link   | https://t.me/+SEU_LINK_AQUI
+Tente de novo    | 15 | #7a0f3d | fa-xmark | nada   |
+PRÊMIO ESPECIAL  | 5  | #ffd700 | fa-gem   | texto  | Parabéns! Fale com o administrador para receber seu prêmio especial.
